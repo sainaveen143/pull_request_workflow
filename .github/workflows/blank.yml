@@ -14,8 +14,8 @@ on:
     - edited
     - synchronize
     - reopened
-  pull_request_review:
-    types: [submitted]
+  # pull_request_review:
+  #   types: [submitted]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -26,12 +26,13 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    if: github.event.review.state == 'approved'
+    # if: github.event.review.state == 'approved'
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+      - run: ${{ github.job }}
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
