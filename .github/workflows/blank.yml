@@ -16,8 +16,6 @@ on:
   #   - reopened
   pull_request_review_comment:
     types: [created]
-    branches:
-    - main
   # issue_comment:
   #   types: [created]
     # branches:
