@@ -55,26 +55,22 @@ name: "Deploy on Comment"
 
 # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
 on:
-  issue_comment:
-    # types: [created]
+ issue_comment:
+    types: [created]
+
+# Allows the workflow to create comments on issues and pull requests
+permissions:
+  issues: write
+  pull-requests: write
 
 jobs:
-  deploy:
-    name: Deploy
-    # Only run if it#s a PR and the comment contains /deploy
-    if: github.event.issue.pull_request && contains(github.event.comment.body, '/deploy')
-    # if: github.event.issue.pull_request
+  pull_request_comment:
+    name: PR comment
+    if: ${{ github.event_name == 'issue_comment' && github.event.issue.pull_request }}
     runs-on: ubuntu-latest
-
     steps:
-      - name: Get branch of PR
-        uses: xt0rted/pull-request-comment-branch@v1
-        id: comment-branch
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/event-summary
 
 
 
