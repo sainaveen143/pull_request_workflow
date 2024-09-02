@@ -14,10 +14,12 @@ on:
   #   - edited
   #   - synchronize
   #   - reopened
-  # pull_request_review:
-  #   types: [submitted]
-  issue_comment:
-    types: [created]
+  pull_request_review:
+    types: [submitted]
+    branches:
+    - main
+  # issue_comment:
+  #   types: [created]
     # branches:
     # - main
 
@@ -30,8 +32,8 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    if: github.event.issue.pull_request
-    # if: github.event.review.state == 'approved'
+    # if: github.event.issue.pull_request
+    # # if: github.event.review.state == 'approved'
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
