@@ -55,14 +55,16 @@ name: "Deploy on Comment"
 
 # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
 on:
-  issues:
-    types: [opened]
+  # issues:
+  #   types: [opened]
   # Trigger the workflow on new pull requests
   pull_request:
     types: [opened]
+    branches:
+    - main
   # Trigger the workflow on new issue comments    
-  issue_comment:
-    types: [created]
+  # issue_comment:
+  #   types: [created]
 
 # Allows the workflow to create comments on issues and pull requests
 permissions:
