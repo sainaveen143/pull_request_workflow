@@ -13,7 +13,9 @@ on:
     - opened
     - edited
     - synchronize
-    - reopened 
+    - reopened
+  pull_request_review:
+    types: [submitted]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
